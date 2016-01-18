@@ -1,0 +1,11 @@
+
+language: ruby
+sudo: false
+
+branches:
+  only:
+    - gh-pages
+
+script:
+  - ANSWER=$(curl "http://online.swagger.io/validator/debug" -d @swagger.json)
+  - test "$ANSWER" = "{}"
