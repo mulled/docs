@@ -102,13 +102,9 @@
 		}
 	},
 	"definitions" : {
-		"Image" : {
-			"type" : "object",
-			"properties" : {
-				"image" : {
-					"type" : "string",
-					"description" : "The unique identifier for the package. Identical with the name in one of the available package managers."
-				},
+		"Version": {
+			"type": "object",
+			"properties": {
 				"date" : {
 					"type" : "string",
 					"description" : "The date the image was last built"
@@ -116,6 +112,23 @@
 				"buildurl" : {
 					"type" : "string",
 					"description" : "References the build that built and uploaded this image."
+				},
+				"version" : {
+					"type" : "string",
+					"description" : "The version from the package manager."
+				},
+				"revision" : {
+					"type" : "string",
+					"description" : "The internal version."
+				}
+			}
+		},
+		"Image" : {
+			"type" : "object",
+			"properties" : {
+				"image" : {
+					"type" : "string",
+					"description" : "The unique identifier for the package. Identical with the name in one of the available package managers."
 				},
 				"packager" : {
 					"type" : "string",
@@ -128,6 +141,12 @@
 				"description" : {
 					"type" : "string",
 					"description" : "A textual message describing the tool."
+				},
+				"versions": {
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Version"
+					}
 				}
 			}
 		},
